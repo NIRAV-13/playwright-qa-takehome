@@ -1,0 +1,23 @@
+{
+  "name": "playwright-qa-takehome",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Playwright automation assessment for the Product Inventory application",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:login": "playwright test tests/login.spec.ts",
+    "test:search": "playwright test tests/search.spec.ts",
+    "report": "playwright show-report",
+    "codegen": "playwright codegen https://qa-takehome-app.onrender.com/index.html",
+    "dump-dom": "node tools/dump-dom.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.0",
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  }
+}
