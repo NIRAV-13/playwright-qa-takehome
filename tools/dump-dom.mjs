@@ -11,7 +11,7 @@ import { chromium } from '@playwright/test';
 import { mkdir, writeFile } from 'node:fs/promises';
 
 const BASE_URL = process.env.BASE_URL ?? 'https://qa-takehome-app.onrender.com';
-const EMAIL = process.env.APP_EMAIL ?? 'admin@test.com';
+const EMAIL = process.env.APP_EMAIL?.trim() || 'admin@test.com';
 const PASSWORD = process.env.APP_PASSWORD ?? 'password123';
 const OUT_DIR = 'artifacts';
 

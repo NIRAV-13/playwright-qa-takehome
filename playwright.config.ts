@@ -5,7 +5,7 @@ import { defineConfig, devices } from '@playwright/test';
  * to respond after it has been idle. Timeouts are therefore deliberately
  * generous, and `global-setup.ts` wakes the instance before the suite starts.
  */
-const BASE_URL = process.env.BASE_URL ?? 'https://qa-takehome-app.onrender.com';
+const BASE_URL = process.env.BASE_URL?.trim() || 'https://qa-takehome-app.onrender.com';
 
 export default defineConfig({
   testDir: './tests',
