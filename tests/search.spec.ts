@@ -35,9 +35,6 @@ test.describe('Product search', () => {
         return results;
       }, { message: `results should match the products containing "${term}"` })
       .toEqual(expectedResults);
-
-    const results = await dashboard.getProductNames();
-    expect(results).toEqual(expectedResults);
   });
 
   test('shows no products when the search term matches nothing', async ({
