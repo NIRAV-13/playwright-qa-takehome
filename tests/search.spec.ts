@@ -23,19 +23,21 @@ test.describe('Product search', () => {
 
     await dashboard.search(term);
 
+    const expectedResults = allProducts.filter((row) =>
+      row.toLowerCase().includes(term.toLowerCase()),
+    );
+
     /* Filtering happens client-side as you type, so poll the rendered list
        until it settles rather than asserting on a single snapshot. */
     await expect
       .poll(async () => {
         const results = await dashboard.getProductNames();
-        return results.length > 0 && results.every((row) => row.toLowerCase().includes(term.toLowerCase()));
-      }, { message: `every visible product should match "${term}"` })
-      .toBe(true);
+        return results;
+      }, { message: `results should match the products containing "${term}"` })
+      .toEqual(expectedResults);
 
     const results = await dashboard.getProductNames();
-    expect(results.length, 'a filter should never return more rows than the full list').toBeLessThanOrEqual(
-      allProducts.length,
-    );
+    expect(results).toEqual(expectedResults);
   });
 
   test('shows no products when the search term matches nothing', async ({
